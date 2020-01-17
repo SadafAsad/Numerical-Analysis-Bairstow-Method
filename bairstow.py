@@ -13,6 +13,10 @@ def det_calculation(x1, x2, x3, x4):
     return (x1*x4)-(x2*x3)
 
 
+def r_s_calculation(r_s, d1_d2, d):
+    return r_s + (d1_d2/d)
+
+
 a_list = [6.0000, 4.0000, 3.0000, 1.0000, 1.0000]
 b_list = [0, 0, 0, 0, 0]
 c_list = [0, 0, 0, 0, 0]
@@ -31,3 +35,4 @@ print(a_list)
 print(b_list)
 print(c_list) 
 print(det_calculation(-12.2740, 8.2300, 8.2300, -3.2000))
+print(r_s_calculation(-2.1, -3.15001, -28.4561))
