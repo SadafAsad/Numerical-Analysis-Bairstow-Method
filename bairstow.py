@@ -1,6 +1,5 @@
 
 import numpy as m_numpy
-import pandas as m_pandas
 
 def b_c_calculation(k, n, a_b_list, r, s):
 
