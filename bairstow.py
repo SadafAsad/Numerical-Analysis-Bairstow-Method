@@ -8,6 +8,11 @@ def b_c_calculation(k, n, a_b_list, r, s):
         + ( r * b_c_calculation(k+1, n, a_b_list, r, s) ) 
         + ( s * b_c_calculation(k+2, n, a_b_list, r, s) ) )
     
+
+def det_calculation(x1, x2, x3, x4):
+    return (x1*x4)-(x2*x3)
+
+
 a_list = [6.0000, 4.0000, 3.0000, 1.0000, 1.0000]
 b_list = [0, 0, 0, 0, 0]
 c_list = [0, 0, 0, 0, 0]
@@ -25,3 +30,4 @@ while(i<5):
 print(a_list)
 print(b_list)
 print(c_list) 
+print(det_calculation(-12.2740, 8.2300, 8.2300, -3.2000))
