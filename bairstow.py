@@ -38,5 +38,13 @@ while(i<5):
 print(a_list)
 print(b_list)
 print(c_list) 
+
 print(det_calculation(-12.2740, 8.2300, 8.2300, -3.2000))
+
 print(r_s_calculation(-2.1, -3.15001, -28.4561))
+
+p2 = m_numpy.array([1, 1, 3, 4, 6])
+p1 = m_numpy.array([1, 2, 2])
+quotient, remainder = m_numpy.polydiv(p2, p1)
+print(quotient)
+print(remainder)
