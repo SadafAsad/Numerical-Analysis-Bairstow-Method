@@ -42,7 +42,7 @@ def initializeList(list, n):
 def polynomial_roots(fun_a_list, roots_list, fun_r_s_list):
 
     if (len(fun_a_list) < 4):
-        roots_list.append(numpy.roots(fun_a_list))
+        roots_list.append(numpy.roots(list(reversed(fun_a_list))))
         print("roots: "+str(roots_list))
 
     else:
@@ -115,14 +115,14 @@ def polynomial_roots(fun_a_list, roots_list, fun_r_s_list):
 
 def polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list):
     p2 = numpy.array(list(reversed(fun_a_list)))
-    p1 = numpy.array(list(reversed(fun_r_s_list)))
+    p1 = numpy.array([1, -fun_r_s_list[0], -fun_r_s_list[1]])
     quotient, remainder = numpy.polydiv(p2, p1)
 
     print("quotient: "+str(quotient))
     print("remainder: "+str(remainder))
 
     if( len(quotient) > 3 ):
-        polynomial_roots(quotient, roots_list, fun_r_s_list)
+        polynomial_roots(list(reversed(quotient)), roots_list, fun_r_s_list)
     else:
         roots_list.append(numpy.roots(quotient))
         print("roots: "+str(roots_list))
