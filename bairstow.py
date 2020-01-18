@@ -16,7 +16,7 @@ def b_c_list(a_b_list, b_c_list, r, s):
     n = len(a_b_list)
     i = 0
     while(i<n):
-        b_c_list[i] = b_c_calculation(i, n-1, a_b_list, r, s)
+        b_c_list[i] = b_c_calculation(i, n-1, list(reversed(a_b_list)), r, s)
         i = i+1
 
 
@@ -40,10 +40,8 @@ def initializeList(list, n):
 
 
 def polynomial_roots(fun_a_list, roots_list, fun_r_s_list):
-
     if (len(fun_a_list) < 4):
-        roots_list.append(numpy.roots(list(reversed(fun_a_list))))
-        print("roots: "+str(roots_list))
+        roots_list.append(numpy.roots(fun_a_list))
 
     else:
         r = random.random()
@@ -69,17 +67,6 @@ def polynomial_roots(fun_a_list, roots_list, fun_r_s_list):
         r = r_s_calculation(r, d1, d)
         s = r_s_calculation(s, d2, d)
 
-        print("a: "+str(fun_a_list))
-        print("b: "+str(b_list))
-        print("c: "+str(c_list))
-        print("d: "+str(d))
-        print("d1: "+str(d1))
-        print("d2: "+str(d2))
-        print("r: "+str(r))
-        print("s: "+str(s))
-        print("r_prev: "+str(r_prev))
-        print("---------------------------------------")
-
         while(abs(r_prev-r) > deghat):
             r_prev = r
 
@@ -92,40 +79,23 @@ def polynomial_roots(fun_a_list, roots_list, fun_r_s_list):
 
             r = r_s_calculation(r, d1, d)
             s = r_s_calculation(s, d2, d)
-
-            print("a: "+str(fun_a_list))
-            print("b: "+str(b_list))
-            print("c: "+str(c_list))
-            print("d: "+str(d))
-            print("d1: "+str(d1))
-            print("d2: "+str(d2))
-            print("r: "+str(r))
-            print("s: "+str(s))
-            print("r_prev: "+str(r_prev))
-            print("---------------------------------------")
-    
+            
         fun_r_s_list[0] = -r
         fun_r_s_list[1] = -s
         roots_list.append(numpy.roots([1, -r, -s]))
-
-        print("roots: "+str(roots_list))
-
         polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list)
 
 
 def polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list):
-    p2 = numpy.array(list(reversed(fun_a_list)))
-    p1 = numpy.array([1, -fun_r_s_list[0], -fun_r_s_list[1]])
+    p2 = numpy.array(fun_a_list)
+    p1 = numpy.array([1, fun_r_s_list[0], fun_r_s_list[1]])
     quotient, remainder = numpy.polydiv(p2, p1)
 
-    print("quotient: "+str(quotient))
-    print("remainder: "+str(remainder))
-
     if( len(quotient) > 3 ):
-        polynomial_roots(list(reversed(quotient)), roots_list, fun_r_s_list)
+        polynomial_roots(quotient, roots_list, fun_r_s_list)
     else:
         roots_list.append(numpy.roots(quotient))
-        print("roots: "+str(roots_list))
+
 
 
 a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
@@ -133,3 +103,4 @@ a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
 roots = list()
 r_s_list = [0, 0]
 polynomial_roots(a_list, roots, r_s_list)
+print(roots)
