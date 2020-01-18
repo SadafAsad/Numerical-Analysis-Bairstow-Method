@@ -40,41 +40,23 @@ def initializeList(list, n):
 
 
 def polynomial_roots(fun_a_list, roots_list, fun_r_s_list):
-    r = random.random()
-    s = random.random()
 
-    deghat = 10**-6
-    a_len = len(fun_a_list)
+    if (len(fun_a_list) < 4):
+        roots_list.append(numpy.roots(fun_a_list))
+        print("roots: "+str(roots_list))
 
-    b_list = list()
-    c_list = list()
-    initializeList(b_list, a_len)
-    initializeList(c_list, a_len)
+    else:
+        r = random.random()
+        s = random.random()
 
-    r_prev = r
+        deghat = 10**-6
+        a_len = len(fun_a_list)
 
-    b_c_list(fun_a_list, b_list, r, s)
-    b_c_list(b_list, c_list, r, s)
+        b_list = list()
+        c_list = list()
+        initializeList(b_list, a_len)
+        initializeList(c_list, a_len)
 
-    d = det_calculation(c_list[1], c_list[2], c_list[2], c_list[3])
-    d1 = det_calculation(-b_list[0], c_list[2], -b_list[1], c_list[3])
-    d2 = det_calculation(c_list[1], -b_list[0], c_list[2], -b_list[1])
-
-    r = r_s_calculation(r, d1, d)
-    s = r_s_calculation(s, d2, d)
-
-    print("a: "+str(a_list))
-    print("b: "+str(b_list))
-    print("c: "+str(c_list))
-    print("d: "+str(d))
-    print("d1: "+str(d1))
-    print("d2: "+str(d2))
-    print("r: "+str(r))
-    print("s: "+str(s))
-    print("r_prev: "+str(r_prev))
-    print("---------------------------------------")
-
-    while(abs(r_prev-r) > deghat):
         r_prev = r
 
         b_c_list(fun_a_list, b_list, r, s)
@@ -97,14 +79,38 @@ def polynomial_roots(fun_a_list, roots_list, fun_r_s_list):
         print("s: "+str(s))
         print("r_prev: "+str(r_prev))
         print("---------------------------------------")
+
+        while(abs(r_prev-r) > deghat):
+            r_prev = r
+
+            b_c_list(fun_a_list, b_list, r, s)
+            b_c_list(b_list, c_list, r, s)
+
+            d = det_calculation(c_list[1], c_list[2], c_list[2], c_list[3])
+            d1 = det_calculation(-b_list[0], c_list[2], -b_list[1], c_list[3])
+            d2 = det_calculation(c_list[1], -b_list[0], c_list[2], -b_list[1])
+
+            r = r_s_calculation(r, d1, d)
+            s = r_s_calculation(s, d2, d)
+
+            print("a: "+str(a_list))
+            print("b: "+str(b_list))
+            print("c: "+str(c_list))
+            print("d: "+str(d))
+            print("d1: "+str(d1))
+            print("d2: "+str(d2))
+            print("r: "+str(r))
+            print("s: "+str(s))
+            print("r_prev: "+str(r_prev))
+            print("---------------------------------------")
     
-    fun_r_s_list[0] = -r
-    fun_r_s_list[1] = -s
-    roots_list.append(numpy.roots([1, -r, -s]))
+        fun_r_s_list[0] = -r
+        fun_r_s_list[1] = -s
+        roots_list.append(numpy.roots([1, -r, -s]))
 
-    print("roots: "+str(roots_list))
+        print("roots: "+str(roots_list))
 
-    polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list)
+        polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list)
 
 
 def polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list):
@@ -122,7 +128,8 @@ def polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list):
         print("roots: "+str(roots_list))
 
 
-a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
+#a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
+a_list = [1.000000, 0.000000, -4.000000]
 roots = list()
 r_s_list = [0, 0]
 polynomial_roots(a_list, roots, r_s_list)
