@@ -98,10 +98,12 @@ def polynomial_roots(fun_a_list, roots_list, fun_r_s_list):
         print("r_prev: "+str(r_prev))
         print("---------------------------------------")
     
-    print(numpy.roots([1, -r, -s]))
     fun_r_s_list[0] = -r
     fun_r_s_list[1] = -s
     roots_list.append(numpy.roots([1, -r, -s]))
+
+    print("roots: "+str(roots_list))
+
     polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list)
 
 
@@ -115,6 +117,9 @@ def polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list):
 
     if( len(quotient) > 3 ):
         polynomial_roots(quotient, roots_list, fun_r_s_list)
+    else:
+        roots_list.append(numpy.roots(quotient))
+        print("roots: "+str(roots_list))
 
 
 a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
