@@ -45,7 +45,6 @@ def polynomial_decomposition(a_list):
 
     deghat = 10**-6
     a_len = len(a_list)
-    n = a_len-1
 
     b_list = list()
     c_list = list()
@@ -82,26 +81,6 @@ def polynomial_decomposition(a_list):
 
 
 a_list = [6.0000, 4.0000, 3.0000, 1.0000, 1.0000]
-b_list = [0, 0, 0, 0, 0]
-c_list = [0, 0, 0, 0, 0]
-
-i=0
-while(i<5):
-    b_list[i] = b_c_calculation(i, 4, a_list, -2.1, -1.9)
-    i = i+1
-
-i=0
-while(i<5):
-    c_list[i] = b_c_calculation(i, 4, b_list, -2.1, -1.9)
-    i = i+1
-
-print(a_list)
-print(b_list)
-print(c_list) 
-
-print(det_calculation(-12.2740, 8.2300, 8.2300, -3.2000))
-
-print(r_s_calculation(-2.1, -3.15001, -28.4561))
 
 p2 = numpy.array([1, 1, 3, 4, 6])
 p1 = numpy.array([1, 2, 2])
