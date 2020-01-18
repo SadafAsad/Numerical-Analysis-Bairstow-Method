@@ -39,12 +39,12 @@ def initializeList(list, n):
         i+=1
 
 
-def polynomial_roots(a_list, roots_list, fun_r_s_list):
+def polynomial_roots(fun_a_list, roots_list, fun_r_s_list):
     r = random.random()
     s = random.random()
 
     deghat = 10**-6
-    a_len = len(a_list)
+    a_len = len(fun_a_list)
 
     b_list = list()
     c_list = list()
@@ -53,7 +53,7 @@ def polynomial_roots(a_list, roots_list, fun_r_s_list):
 
     r_prev = r
 
-    b_c_list(a_list, b_list, r, s)
+    b_c_list(fun_a_list, b_list, r, s)
     b_c_list(b_list, c_list, r, s)
 
     d = det_calculation(c_list[1], c_list[2], c_list[2], c_list[3])
@@ -77,7 +77,7 @@ def polynomial_roots(a_list, roots_list, fun_r_s_list):
     while(abs(r_prev-r) > deghat):
         r_prev = r
 
-        b_c_list(a_list, b_list, r, s)
+        b_c_list(fun_a_list, b_list, r, s)
         b_c_list(b_list, c_list, r, s)
 
         d = det_calculation(c_list[1], c_list[2], c_list[2], c_list[3])
@@ -97,20 +97,26 @@ def polynomial_roots(a_list, roots_list, fun_r_s_list):
         print("s: "+str(s))
         print("r_prev: "+str(r_prev))
         print("---------------------------------------")
-    print(numpy.roots([1, -r, -s]))
-    fun_r_s_list[0] = r
-    fun_r_s_list[1] = s
-    roots_list.append(numpy.roots([1, -r, -s]))
-
-
-def polynomial_decomposition():
     
+    print(numpy.roots([1, -r, -s]))
+    fun_r_s_list[0] = -r
+    fun_r_s_list[1] = -s
+    roots_list.append(numpy.roots([1, -r, -s]))
+    polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list)
+
+
+def polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list):
+    p2 = numpy.array(list(reversed(fun_a_list)))
+    p1 = numpy.array(list(reversed(fun_r_s_list)))
+    quotient, remainder = numpy.polydiv(p2, p1)
+    if( len(quotient) > 3 ):
+        polynomial_roots(quotient, roots_list, fun_r_s_list)
 
 
 a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
 roots = list()
 r_s_list = [0, 0]
-polynomial_roots(a_list, roots)
+polynomial_roots(a_list, roots, r_s_list)
 
 p2 = numpy.array([1, 1, 3, 4, 6])
 p1 = numpy.array([1, 2, 2])
