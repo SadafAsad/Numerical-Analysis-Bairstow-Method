@@ -39,7 +39,7 @@ def initializeList(list, n):
         i+=1
 
 
-def polynomial_decomposition(a_list):
+def polynomial_decomposition(a_list, roots_list):
     r = random.random()
     s = random.random()
 
@@ -74,10 +74,7 @@ def polynomial_decomposition(a_list):
     print("r_prev: "+str(r_prev))
     print("---------------------------------------")
 
-    while(abs(r_prev-r) <= deghat):
-        r = random.random()
-        s = random.random()
-
+    while(abs(r_prev-r) > deghat):
         r_prev = r
 
         b_c_list(a_list, b_list, r, s)
@@ -100,10 +97,13 @@ def polynomial_decomposition(a_list):
         print("s: "+str(s))
         print("r_prev: "+str(r_prev))
         print("---------------------------------------")
+    print(numpy.roots([1, -r, -s]))
+    roots_list.append(numpy.roots([1, -r, -s]))
 
 
 a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
-polynomial_decomposition(a_list)
+roots = list()
+polynomial_decomposition(a_list, roots)
 
 p2 = numpy.array([1, 1, 3, 4, 6])
 p1 = numpy.array([1, 2, 2])
