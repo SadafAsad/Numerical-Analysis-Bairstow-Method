@@ -69,7 +69,7 @@ def polynomial_roots(fun_a_list, roots_list, fun_r_s_list):
         r = r_s_calculation(r, d1, d)
         s = r_s_calculation(s, d2, d)
 
-        print("a: "+str(a_list))
+        print("a: "+str(fun_a_list))
         print("b: "+str(b_list))
         print("c: "+str(c_list))
         print("d: "+str(d))
@@ -93,7 +93,7 @@ def polynomial_roots(fun_a_list, roots_list, fun_r_s_list):
             r = r_s_calculation(r, d1, d)
             s = r_s_calculation(s, d2, d)
 
-            print("a: "+str(a_list))
+            print("a: "+str(fun_a_list))
             print("b: "+str(b_list))
             print("c: "+str(c_list))
             print("d: "+str(d))
@@ -128,8 +128,8 @@ def polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list):
         print("roots: "+str(roots_list))
 
 
-#a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
-a_list = [1.000000, 0.000000, -4.000000]
+a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
+#a_list = [1.000000, 0.000000, -4.000000]
 roots = list()
 r_s_list = [0, 0]
 polynomial_roots(a_list, roots, r_s_list)
