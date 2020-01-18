@@ -105,6 +105,6 @@ print(r_s_calculation(-2.1, -3.15001, -28.4561))
 
 p2 = numpy.array([1, 1, 3, 4, 6])
 p1 = numpy.array([1, 2, 2])
-quotient, remainder = m_numpy.polydiv(p2, p1)
+quotient, remainder = numpy.polydiv(p2, p1)
 print(quotient)
 print(remainder)
