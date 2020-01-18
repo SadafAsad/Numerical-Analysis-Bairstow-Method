@@ -63,6 +63,17 @@ def polynomial_decomposition(a_list):
     r = r_s_calculation(r, d1, d)
     s = r_s_calculation(s, d2, d)
 
+    print("a: "+str(a_list))
+    print("b: "+str(b_list))
+    print("c: "+str(c_list))
+    print("d: "+str(d))
+    print("d1: "+str(d1))
+    print("d2: "+str(d2))
+    print("r: "+str(r))
+    print("s: "+str(s))
+    print("r_prev: "+str(r_prev))
+    print("---------------------------------------")
+
     while(abs(r_prev-r) <= deghat):
         r = random.random()
         s = random.random()
@@ -79,8 +90,20 @@ def polynomial_decomposition(a_list):
         r = r_s_calculation(r, d1, d)
         s = r_s_calculation(s, d2, d)
 
+        print("a: "+str(a_list))
+        print("b: "+str(b_list))
+        print("c: "+str(c_list))
+        print("d: "+str(d))
+        print("d1: "+str(d1))
+        print("d2: "+str(d2))
+        print("r: "+str(r))
+        print("s: "+str(s))
+        print("r_prev: "+str(r_prev))
+        print("---------------------------------------")
 
-a_list = [6.0000, 4.0000, 3.0000, 1.0000, 1.0000]
+
+a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
+polynomial_decomposition(a_list)
 
 p2 = numpy.array([1, 1, 3, 4, 6])
 p1 = numpy.array([1, 2, 2])
