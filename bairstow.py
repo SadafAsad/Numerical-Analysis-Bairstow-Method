@@ -144,7 +144,9 @@ while(continuation == 1):
         sums = roots_summation(roots)
         print("roots: " + str(roots))
         print("output: " + str(sums[0]) + " " + str(sums[1]))
-        continuation = int(input("Do you want to continue? 1)YES 2)NO "))
+        print("Do you want to continue?(enter 1 or 2)")
+        continuation = int(input("1)YES 2)NO "))
     else:
         print("Incorrect input")
-        continuation = int(input("Do you want to continue? 1)YES 2)NO "))
+        print("Do you want to continue?(enter 1 or 2)")
+        continuation = int(input("1)YES 2)NO "))
