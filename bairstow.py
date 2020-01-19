@@ -2,6 +2,8 @@
 import numpy
 import random
 
+#bk and ck calculation
+#--each cell in b list and c list--
 def b_c_calculation(k, n, a_b_list, r, s):
     if (k==n+1 or k==n+2):
         return 0
@@ -12,6 +14,7 @@ def b_c_calculation(k, n, a_b_list, r, s):
         + ( s * b_c_calculation(k+2, n, a_b_list, r, s) ) )
     
 
+#b array and c array calculation
 def b_c_list(a_b_list, b_c_list, r, s):
     n = len(a_b_list)
     i = 0
@@ -20,14 +23,18 @@ def b_c_list(a_b_list, b_c_list, r, s):
         i = i+1
 
 
+#determinant calculation
+#--4 values passed az determinant's arguments-- 
 def det_calculation(x1, x2, x3, x4):
     return (x1*x4)-(x2*x3)
 
 
+#r and s calculation
 def r_s_calculation(r_s, d1_d2, d):
     return r_s + (d1_d2/d)
 
 
+#initializing list with zeros
 def initializeList(list, n):
     i=0
     while i<n:
@@ -39,7 +46,10 @@ def initializeList(list, n):
         i+=1
 
 
+#calculates roots and calls polynomial decompoition to decompose the polynomial
 def polynomial_roots(fun_a_list, roots_list, fun_r_s_list):
+
+    #if the polynomial's degree is less than 3
     if (len(fun_a_list) < 4):
         roots_list.append(numpy.roots(fun_a_list))
 
@@ -79,6 +89,8 @@ def polynomial_roots(fun_a_list, roots_list, fun_r_s_list):
 
             r = r_s_calculation(r, d1, d)
             s = r_s_calculation(s, d2, d)
+            print("r: "+str(r))
+            print("s: "+str(s))
             
         fun_r_s_list[0] = -r
         fun_r_s_list[1] = -s
@@ -91,6 +103,7 @@ def polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list):
     p1 = numpy.array([1, fun_r_s_list[0], fun_r_s_list[1]])
     quotient, remainder = numpy.polydiv(p2, p1)
 
+    #if polynomial's root is greater than 2, not only calculate roots but also decompose it
     if( len(quotient) > 3 ):
         polynomial_roots(quotient, roots_list, fun_r_s_list)
     else:
@@ -98,9 +111,11 @@ def polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list):
 
 
 
-a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
-#a_list = [1.000000, 0.000000, -4.000000]
-roots = list()
-r_s_list = [0, 0]
-polynomial_roots(a_list, roots, r_s_list)
-print(roots)
+# a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
+# a_list = [1.000000, 0.000000, -4.000000]
+# roots = list()
+# r_s_list = [0, 0]
+# polynomial_roots(a_list, roots, r_s_list)
+# print(roots)
+
+
