@@ -68,7 +68,7 @@ def polynomial_roots(fun_a_list, roots_list, fun_r_s_list):
         r_prev = r
 
         b_c_list(fun_a_list, b_list, r, s)
-        b_c_list(b_list, c_list, r, s)
+        b_c_list(list(reversed(b_list)), c_list, r, s)
 
         d = det_calculation(c_list[1], c_list[2], c_list[2], c_list[3])
         d1 = det_calculation(-b_list[0], c_list[2], -b_list[1], c_list[3])
@@ -118,4 +118,15 @@ def polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list):
 # polynomial_roots(a_list, roots, r_s_list)
 # print(roots)
 
-
+#b and c array calculation checked
+r = -2.1
+s = -1.9
+a_list = [1, 1, 3, 4, 6]
+b_list = list()
+c_list = list()
+initializeList(b_list, len(a_list))
+initializeList(c_list, len(b_list))
+b_c_list(a_list, b_list, r, s)
+b_c_list(list(reversed(b_list)), c_list, r, s)
+print(b_list)
+print(c_list)
