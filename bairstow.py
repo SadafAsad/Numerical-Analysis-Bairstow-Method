@@ -118,27 +118,27 @@ def polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list):
 # polynomial_roots(a_list, roots, r_s_list)
 # print(roots)
 
-#b and c array calculation checked
-r = -2.1
-s = -1.9
-a_list = [1, 1, 3, 4, 6]
-b_list = list()
-c_list = list()
-initializeList(b_list, len(a_list))
-initializeList(c_list, len(b_list))
-b_c_list(a_list, b_list, r, s)
-b_c_list(list(reversed(b_list)), c_list, r, s)
-print("b: " + str(b_list))
-print("c: " + str(c_list))
-#determinant calculation checked
-d = det_calculation(c_list[1], c_list[2], c_list[2], c_list[3])
-d1 = det_calculation(-b_list[0], c_list[2], -b_list[1], c_list[3])
-d2 = det_calculation(c_list[1], -b_list[0], c_list[2], -b_list[1])
-print("d: " + str(d))
-print("d1: " + str(d1))
-print("d2: " + str(d2))
-#r and s calculation checked
-r = r_s_calculation(r, d1, d)
-s = r_s_calculation(s, d2, d)
-print("r: " + str(r))
-print("s: " + str(s))
+# #b and c array calculation checked
+# r = -2.1
+# s = -1.9
+# a_list = [1, 1, 3, 4, 6]
+# b_list = list()
+# c_list = list()
+# initializeList(b_list, len(a_list))
+# initializeList(c_list, len(b_list))
+# b_c_list(a_list, b_list, r, s)
+# b_c_list(list(reversed(b_list)), c_list, r, s)
+# print("b: " + str(b_list))
+# print("c: " + str(c_list))
+# #determinant calculation checked
+# d = det_calculation(c_list[1], c_list[2], c_list[2], c_list[3])
+# d1 = det_calculation(-b_list[0], c_list[2], -b_list[1], c_list[3])
+# d2 = det_calculation(c_list[1], -b_list[0], c_list[2], -b_list[1])
+# print("d: " + str(d))
+# print("d1: " + str(d1))
+# print("d2: " + str(d2))
+# #r and s calculation checked
+# r = r_s_calculation(r, d1, d)
+# s = r_s_calculation(s, d2, d)
+# print("r: " + str(r))
+# print("s: " + str(s))
