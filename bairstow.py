@@ -137,7 +137,8 @@ r_s_list = [random.random(), random.random()]
 r_s_chosen = [0, 0]
 polynomial_roots(a_list, roots, r_s_list, r_s_chosen)
 print(roots)
-print(roots_summation(roots))
+sums = roots_summation(roots)
+print(str(sums[0]) + " " + str(sums[1]))
 
 # #b and c array calculation checked
 # r = -2.1
