@@ -137,3 +137,8 @@ d2 = det_calculation(c_list[1], -b_list[0], c_list[2], -b_list[1])
 print("d: " + str(d))
 print("d1: " + str(d1))
 print("d2: " + str(d2))
+#r and s calculation checked
+r = r_s_calculation(r, d1, d)
+s = r_s_calculation(s, d2, d)
+print("r: " + str(r))
+print("s: " + str(s))
