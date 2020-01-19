@@ -127,40 +127,24 @@ def roots_summation(fun_roots):
         i = i + 1
     return positive_sum
 
-
-a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
-# a_list = [1.000000, 0.000000, -4.000000]
-# a_list = [1, 1, 3, 4, 6]
-roots = list()
-r_s_list = [random.random(), random.random()]
-# r_s_list = [-2.1, -1.9]
-r_s_chosen = [0, 0]
-polynomial_roots(a_list, roots, r_s_list, r_s_chosen)
-print(roots)
-sums = roots_summation(roots)
-print(str(sums[0]) + " " + str(sums[1]))
-
-# #b and c array calculation checked
-# r = -2.1
-# s = -1.9
-# a_list = [1, 1, 3, 4, 6]
-# b_list = list()
-# c_list = list()
-# initializeList(b_list, len(a_list))
-# initializeList(c_list, len(b_list))
-# b_c_list(a_list, b_list, r, s)
-# b_c_list(list(reversed(b_list)), c_list, r, s)
-# print("b: " + str(b_list))
-# print("c: " + str(c_list))
-# #determinant calculation checked
-# d = det_calculation(c_list[1], c_list[2], c_list[2], c_list[3])
-# d1 = det_calculation(-b_list[0], c_list[2], -b_list[1], c_list[3])
-# d2 = det_calculation(c_list[1], -b_list[0], c_list[2], -b_list[1])
-# print("d: " + str(d))
-# print("d1: " + str(d1))
-# print("d2: " + str(d2))
-# #r and s calculation checked
-# r = r_s_calculation(r, d1, d)
-# s = r_s_calculation(s, d2, d)
-# print("r: " + str(r))
-# print("s: " + str(s))
+continuation = 1
+while(continuation == 1):
+    n = int(input("Enter polynomial's degree: "))
+    a_list_str = input("Enter coefficients: ").split()
+    a_list = list()
+    i = 0
+    if(len(a_list_str) == n+1):
+        while(i<len(a_list_str)):
+            a_list.append(int(a_list_str[i]))
+            i = i + 1
+        roots = list()
+        r_s_chosen = [0, 0]
+        r_s_list = [random.random(), random.random()]
+        polynomial_roots(a_list, roots, r_s_list, r_s_chosen)
+        sums = roots_summation(roots)
+        print("roots: " + str(roots))
+        print("output: " + str(sums[0]) + " " + str(sums[1]))
+        continuation = int(input("Do you want to continue? 1)YES 2)NO "))
+    else:
+        print("Incorrect input")
+        continuation = int(input("Do you want to continue? 1)YES 2)NO "))
