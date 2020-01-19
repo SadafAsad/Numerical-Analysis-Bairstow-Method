@@ -119,13 +119,13 @@ def polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list, fun_r_s_chose
 
 def roots_summation(fun_roots):
     i = 0
-    posetive_sum = [0, 0]
+    positive_sum = [0, 0]
     while (i < len(fun_roots)):
         if (fun_roots[i].imag >= 0):
-            posetive_sum[0] = round((posetive_sum[0] + fun_roots[i].real), 6)
-            posetive_sum[1] = round((posetive_sum[1] + fun_roots[i].imag), 6)
+            positive_sum[0] = round((positive_sum[0] + fun_roots[i].real), 6)
+            positive_sum[1] = round((positive_sum[1] + fun_roots[i].imag), 6)
         i = i + 1
-    return posetive_sum
+    return positive_sum
 
 
 a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
