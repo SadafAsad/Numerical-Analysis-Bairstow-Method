@@ -1,6 +1,7 @@
 
 import numpy
 import random
+import cmath
 
 #bk and ck calculation
 #--each cell in b list and c list--
@@ -93,8 +94,6 @@ def polynomial_roots(fun_a_list, roots_list, fun_r_s_list, fun_r_s_chosen):
 
             r = r_s_calculation(r, d1, d)
             s = r_s_calculation(s, d2, d)
-            print("r: "+str(r))
-            print("s: "+str(s))
             
         fun_r_s_chosen[0] = r
         fun_r_s_chosen[1] = s
@@ -118,6 +117,16 @@ def polynomial_decomposition(fun_a_list, fun_r_s_list, roots_list, fun_r_s_chose
         roots_list.append(round(list(numpy.roots(quotient))[0], 6))
 
 
+def roots_summation(fun_roots):
+    i = 0
+    posetive_sum = [0, 0]
+    while (i < len(fun_roots)):
+        if (fun_roots[i].imag >= 0):
+            posetive_sum[0] = round((posetive_sum[0] + fun_roots[i].real), 6)
+            posetive_sum[1] = round((posetive_sum[1] + fun_roots[i].imag), 6)
+        i = i + 1
+    return posetive_sum
+
 
 a_list = [-3.000000, 2.000000, 1.000000, 0.000000, -1.000000, -1.000000]
 # a_list = [1.000000, 0.000000, -4.000000]
@@ -128,6 +137,7 @@ r_s_list = [random.random(), random.random()]
 r_s_chosen = [0, 0]
 polynomial_roots(a_list, roots, r_s_list, r_s_chosen)
 print(roots)
+print(roots_summation(roots))
 
 # #b and c array calculation checked
 # r = -2.1
