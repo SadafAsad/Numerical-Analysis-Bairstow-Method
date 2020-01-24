@@ -127,26 +127,17 @@ def roots_summation(fun_roots):
         i = i + 1
     return positive_sum
 
-continuation = 1
-while(continuation == 1):
-    n = int(input("Enter polynomial's degree: "))
-    a_list_str = input("Enter coefficients: ").split()
-    a_list = list()
-    i = 0
-    if(len(a_list_str) == n+1):
-        while(i<len(a_list_str)):
-            a_list.append(int(a_list_str[i]))
-            i = i + 1
-        roots = list()
-        r_s_chosen = [0, 0]
-        r_s_list = [random.random(), random.random()]
-        polynomial_roots(a_list, roots, r_s_list, r_s_chosen)
-        sums = roots_summation(roots)
-        print("roots: " + str(roots))
-        print("output: " + str(sums[0]) + " " + str(sums[1]))
-        print("Do you want to continue?(enter 1 or 2)")
-        continuation = int(input("1)YES 2)NO "))
-    else:
-        print("Incorrect input")
-        print("Do you want to continue?(enter 1 or 2)")
-        continuation = int(input("1)YES 2)NO "))
+n = int(input())
+a_list_str = input().split()
+a_list = list()
+i = 0
+if(len(a_list_str) == n+1):
+    while(i<len(a_list_str)):
+        a_list.append(int(a_list_str[i]))
+        i = i + 1
+    roots = list()
+    r_s_chosen = [0, 0]
+    r_s_list = [random.random(), random.random()]
+    polynomial_roots(a_list, roots, r_s_list, r_s_chosen)
+    sums = roots_summation(roots)
+    print(str(sums[0]) + " " + str(sums[1]))
